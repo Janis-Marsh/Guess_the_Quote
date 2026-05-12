@@ -1,0 +1,115 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    text-align: center;
+    background-color: lightblue;
+    font-family: "Lugrasimo", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    color: rgb(253, 253, 163);
+    font-size: 3.5rem;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+#modeSelector h2 {
+    color: white;
+}
+
+button {
+    width: 200px;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(253, 253, 163);
+    font-family: "Lugrasimo", cursive;
+}
+
+/* Game screen CSS */
+
+#quote-container {
+    width: 90%;
+    padding: 3rem;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 28px;
+}
+
+
+#feedback {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+input {
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.score {
+    display: block;
+    color: white;
+    background-color: rgb(255, 127, 244);
+    width: 400px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+
+/* Instruction CSS */
+#instructions h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    color: black;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: solid 4px rgb(255, 255, 128);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+
+#closeInstructions {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Screen display CSS */
+.active-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.hidden-screen {
+    display: none;
+}

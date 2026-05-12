@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Quote</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <!-- Game title -->
+    <h1>Guess the Quote</h1>
+
+    <!-- Mode selection screen -->
+    <div id="modeSelector"  class="active-screen">
+        <!-- Mode selection buttons -->
+        <h2>Select a Mode:</h2>
+        <button id="allBtn">All</button>
+        <button id="tvBtn">TV Shows</button>
+        <button id="movieBtn">Movies</button>
+        <button id="comedyBtn">Stand-up comedy</button>
+        
+        <!-- Instructions button -->
+        <h2>Instructions:</h2>
+        <button id="instructionsBtn">Instructions</button>
+    </div>
+
+    <!-- Instructions popup -->
+    <div id="instructionsPopup" class="popup hidden-screen">
+            <div class="popup-content">
+                <h2>How to play:</h2>
+                <ul>
+                    <li>Select a mode:</li>
+                    <ul>
+                        <li>All</li>
+                        <li>TV Shows</li>
+                        <li>Movies</li>
+                        <li>Stand-up comedy</li>
+                    </ul>
+                    <li>Read the quote and guess where it comes from</li>
+                    <li>You get <strong>3 tries</strong> per quote before the answer is revealed</li>
+                    <li>You can skip a quote at any time</li>
+                    <li>Type your guess and press submit guess or enter to check your answer</li>
+                </ul>
+
+                <!-- Close instructions button -->
+                <button id="closeInstructions">❌</button>
+            </div>
+        </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="hidden-screen">
+        <!-- Displays quote -->
+        <div id="quote-container"></div>
+
+        <!-- Provides user feedback -->
+        <p id="feedback"></p>
+
+        <!-- User input -->
+        <input type="text" id="guessInput" placeholder="Enter a guess" accesskey="i">
+
+        <!-- Tracks score -->
+        <p id="scoreTracker"></p>
+        <br/>
+
+        <!-- Game control buttons -->
+        <button id="submitBtn">Submit Guess</button>
+        <button id="skipBtn" accesskey="s">Skip Quote</button>
+        <button id="menuBtn">Back to Menu</button>
+    </div>
+</body>
+</html>
