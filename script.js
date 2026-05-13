@@ -21,7 +21,7 @@ const quotes = [
     { quote: "Ninja Storm, Ranger Form!!!!", answer: "Power Rangers Ninja Storm", category: "tv show" },
     { quote: "Skadoosh", answer: "Kung Fu Panda", category: "movie" },
     { quote: "Inner Peace, Dinner Please, Dinner with Peas", answer: "Kung Fu Panda 2", category: "movie" },
-    { quote: "Never in life have I blushed. Russians do not do this.", answer: "Heated Rivalry", category: "tv show" },
+    { quote: "This is a cow farm. You're gonna find cows outside.", answer: "Barnyard", category: "movie" },
     { quote: "You just gestured to all of me.", answer: "How to train your dragon", category: "movie" },
     { quote: "The Egyptians believe that the most significant thing you could do in your life was die.", answer: "Cunk on Earth", category: "tv show" },
     { quote: "You want my money, go get it!", answer: "John Mulaney: Kis Gorgeous at Radio City", category: "comedy" },
