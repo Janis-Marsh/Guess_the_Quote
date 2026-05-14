@@ -146,8 +146,8 @@ function checkGuess(){
     }
 
     // Gives a hint after 2 guesses
-    if (guesses >= 2) {
-        hint.textContent = `Hint: Said by ${shuffledQuote[currentIndex].hint}`
+    if (guesses === 2) {
+        hint.textContent = `Hint: Character = ${shuffledQuote[currentIndex].hint}`
         hint.style.color = 'orange';
         hint.style.fontWeight = 'bold';
     }
@@ -156,6 +156,7 @@ function checkGuess(){
     if (guesses >= 3) {
         feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
         feedback.style.color = 'navy';
+        hint.textContent = '';
         guesses = 0;
 
         setTimeout(nextQuote, 2000);
