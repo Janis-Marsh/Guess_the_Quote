@@ -211,6 +211,7 @@ function skipQuote() {
 
     feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
     feedback.style.color = 'navy';
+    hint.textContent = '';
     
     setTimeout(nextQuote, 2000);
     return;
