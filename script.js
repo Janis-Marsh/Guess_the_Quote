@@ -194,6 +194,16 @@ function resetGame() {
     displayQuote();
 }
 
+// Reveals answer and moves to next quote after a delay
+function skipQuote() {
+
+    feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
+    feedback.style.color = 'navy';
+    
+    setTimeout(nextQuote, 2000);
+    return;
+}
+
 // Returns user to main menu
 function goToMenu() {
     document.getElementById('modeSelector').classList.replace('hidden-screen', 'active-screen');
@@ -204,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Game Buttons
     document.getElementById('submitBtn').addEventListener('click', checkGuess);
-    document.getElementById('skipBtn').addEventListener('click', nextQuote);
+    document.getElementById('skipBtn').addEventListener('click', skipQuote);
     document.getElementById('menuBtn').addEventListener('click', goToMenu);
 
     // Mode Selection
