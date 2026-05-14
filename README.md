@@ -23,6 +23,8 @@ The game consists of several important functions:
 
 ### 1. Random Quote Generation
 
+Shuffles quotes
+
 ```javascript
 function shuffleArray(quotes) {
     
@@ -39,8 +41,9 @@ function shuffleArray(quotes) {
 
 ### 2. Start game function
 
-```javascript
 // Filters quotes by mode and starts the game
+
+```javascript
 function startGame(mode) {
     currentMode = mode;
 
@@ -53,7 +56,6 @@ function startGame(mode) {
     shuffledQuote = shuffleArray([...activeQuotes]);
     currentIndex = 0;
 
-    // Switches screens
     document.getElementById('modeSelector').classList.replace('active-screen', 'hidden-screen');
     document.getElementById('gameScreen').classList.replace('hidden-screen', 'active-screen');
 
@@ -63,8 +65,9 @@ function startGame(mode) {
 
 ### 3. Display Quote Function
 
+Displays current quote
+
 ```javascript
-// Displays current quote
 function displayQuote() {
     document.getElementById('quote-container').textContent = `"${shuffledQuote[currentIndex].quote}"`;
     guessInput.value ='';
@@ -73,10 +76,14 @@ function displayQuote() {
 
 ### 4. Guess Checking Function
 
+Checks user's guess
+
 ```javascript
 function checkGuess(){
+
+    const userGuess = normalizeText(guessInput.value);
+    const correctGuess = normalizeText(shuffledQuote[currentIndex].answer);
    
-    // Tracks score and informs user they guessed correctly
     if (userGuess === correctGuess){
         feedback.textContent = `Congratulations! You guessed correct.`;
         feedback.style.color = 'green';
@@ -89,46 +96,48 @@ function checkGuess(){
             tracker.className = 'score';
         }
        
-        // moves to next quote after delay
         setTimeout(nextQuote, 1500);
 
         return;
-
     } 
-    // Asks user to enter input
     else if (userGuess === '') {
         feedback.textContent = "Please input a guess.";
         feedback.style.color = 'orange';
     }
-    // increases guess and tracks wrong answer
     else {
         guesses++
         feedback.textContent = `Wrong Answer! (${guesses}/3)`;
         feedback.style.color = 'red';
     }
 
-    // Reveals answer after too many wrong guesses
+    if (guesses === 2) {
+        hint.textContent = `Hint: Character = ${shuffledQuote[currentIndex].hint}`
+        hint.style.color = 'orange';
+        hint.style.fontWeight = 'bold';
+    }
+
     if (guesses >= 3) {
         feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
         feedback.style.color = 'navy';
+        hint.textContent = '';
         guesses = 0;
 
         setTimeout(nextQuote, 2000);
         return;
     }
 
-    guessInput.value ='';
+    guessInput.value = '';
 }
 ```
 
 ### 4. Next Quote Function
 
+Moves to the next quote
+
 ```javascript
-// Moves to the next quote
 function nextQuote() {
     currentIndex++;
 
-    // checks if the game is over
     if (currentIndex >= shuffledQuote.length) {
         gameOver();
         setTimeout(resetGame, 3000);
@@ -140,7 +149,22 @@ function nextQuote() {
 }
 ```
 
-### 5. Reset Game Function
+### 5. Skip Quote Function
+
+Reveals answer and moves to next quote after a delay
+
+```javascript
+function skipQuote() {
+
+    feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
+    feedback.style.color = 'navy';
+    
+    setTimeout(nextQuote, 2000);
+    return;
+}
+```
+
+### 6. Reset Game Function
 
 ```javascript
 function resetGame() {
@@ -214,6 +238,7 @@ To implement this game you need:
         <div id="quote-container"></div>
 
         <p id="feedback"></p>
+        <p id="hint"></p>
 
         <input type="text" id="guessInput" placeholder="Enter a guess" accesskey="i">
 
