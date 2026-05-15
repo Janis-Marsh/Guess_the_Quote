@@ -148,7 +148,7 @@ function checkGuess(){
     // Gives a hint after 2 guesses
     if (guesses === 2) {
         hint.textContent = `Hint: Character = ${shuffledQuote[currentIndex].hint}`
-        hint.style.color = 'orange';
+        hint.style.color = 'brown';
         hint.style.fontWeight = 'bold';
     }
 
