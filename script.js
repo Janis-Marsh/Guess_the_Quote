@@ -25,13 +25,13 @@ const quotes = [
     { quote: "You just gestured to all of me.", answer: "How to train your dragon", category: "movie", hint: "Hiccup Horrendous Haddock III" },
     { quote: "Thank you for nothing, you useless reptile.", answer: "How to train your dragon", category: "movie", hint: "Hiccup Horrendous Haddock III" },
     { quote: "The Egyptians believe that the most significant thing you could do in your life was die.", answer: "Cunk on Earth", category: "tv show", hint: "Philomena Cunk" },
-    { quote: "You want my money, go get it!", answer: "John Mulaney: Kid Gorgeous at Radio City", category: "comedy", hint: "John Mulaney" },
+    { quote: "You want my money, go get it!", answer: "John Mulaney: Kid Gorgeous at Radio City", category: "comedy", hint: "Radio City" },
     { quote: "I don't know. I ... I guess I'm not woke. Okay? Fine! You win with your gay stuff! That's what you want, right? To win", answer: "Family Guy", category: "tv show", hint: "Lois Griffin" },
-    { quote: "Ha ha ha ha ha! Ha ha ha ha ha! Hey, look at that high-waisted man! He got feminine hips!", answer: "John Mulaney: New in Town", category: "comedy", hint: "John Mulaney" },
-    { quote: "Hey, you could pour soup in my lap and I'll probably apologize to you.", answer: "John Mulaney: The Comeback Kid", category: "comedy", hint: "John Mulaney" },
-    { quote: "Hey, before we hand you a baby forever, can you put this metal bowl in the microwave for me?", answer: "Taylor Tomlinson: Quarter-Life Crisis", category: "comedy", hint: "Taylor Tomlinson" },
-    { quote: "When I can't sleep, I lay on the floor in the kitchen for 10 minutes", answer: "Taylor Tomlinson: Have It All", category: "comedy", hint: "Taylor Tomlinson" },
-    { quote: "She's in heaven, I'm on Netflix, it all worked out.", answer: "Taylor Tomlinson: Look at You", category: "comedy", hint: "Taylor Tomlinson" },
+    { quote: "Ha ha ha ha ha! Ha ha ha ha ha! Hey, look at that high-waisted man! He got feminine hips!", answer: "John Mulaney: New in Town", category: "comedy", hint: "New in Town" },
+    { quote: "Hey, you could pour soup in my lap and I'll probably apologize to you.", answer: "John Mulaney: The Comeback Kid", category: "comedy", hint: "Comeback Kid" },
+    { quote: "Hey, before we hand you a baby forever, can you put this metal bowl in the microwave for me?", answer: "Taylor Tomlinson: Quarter-Life Crisis", category: "comedy", hint: "Quarter-Life Crisis" },
+    { quote: "When I can't sleep, I lay on the floor in the kitchen for 10 minutes", answer: "Taylor Tomlinson: Have It All", category: "comedy", hint: "Have it All" },
+    { quote: "She's in heaven, I'm on Netflix, it all worked out.", answer: "Taylor Tomlinson: Look at You", category: "comedy", hint: "Look at You" },
     { quote: "And remember, with a little Rust-eze, and an insane amount of luck... You too, can look like me. Kachow.", answer: "Cars", category: "movie", hint: "Lighting McQueen" },
 ];
 
@@ -133,6 +133,7 @@ function checkGuess(){
         return;
 
     } 
+
     // Asks user to enter input
     else if (userGuess === '') {
         feedback.textContent = "Please input a guess.";
@@ -150,6 +151,12 @@ function checkGuess(){
         hint.textContent = `Hint: Character = ${shuffledQuote[currentIndex].hint}`
         hint.style.color = 'brown';
         hint.style.fontWeight = 'bold';
+
+        if (shuffledQuote[currentIndex].answer.includes("John Mulaney") || shuffledQuote[currentIndex].answer.includes("Taylor Tomlinson")) {
+            hint.textContent = `Hint: ${shuffledQuote[currentIndex].hint}`
+            hint.style.color = 'brown';
+            hint.style.fontWeight = 'bold';
+        }
     }
 
     // Reveals answer after too many wrong guesses
@@ -211,7 +218,6 @@ function skipQuote() {
 
     feedback.textContent = `Correct Answer: ${shuffledQuote[currentIndex].answer}`;
     feedback.style.color = 'navy';
-    hint.textContent = '';
     
     setTimeout(nextQuote, 2000);
     return;
